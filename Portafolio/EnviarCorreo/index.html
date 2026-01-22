@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Práctica SMTP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="bg-blur-container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="card-container">
+        <h1>Crear Cuenta</h1>
+        <p class="subtitle">Ingresa tus datos para validar el servicio SMTP</p>
+        
+        <form id="registroForm" novalidate>
+            
+            <div class="input-group">
+                <label for="nombre">Nombre Completo</label>
+                <div class="input-wrapper">
+                    <input type="text" id="nombre" name="nombre" placeholder="" autocomplete="off">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+                <small class="error-text">Por favor ingresa tu nombre</small>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Correo Electrónico</label>
+                <div class="input-wrapper">
+                    <input type="email" id="email" name="email" placeholder="" autocomplete="off">
+                    <i class="fa-regular fa-envelope"></i>
+                </div>
+                <small class="error-text">Ingresa un correo válido</small>
+            </div>
+
+            <div class="input-group">
+                <label for="telefono">Teléfono</label>
+                <div class="input-wrapper">
+                    <input type="tel" id="telefono" name="telefono" placeholder="" autocomplete="off">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+                <small class="error-text">Ingresa un número de 10 dígitos</small>
+            </div>
+
+            <button type="submit" name="registro">Registrar Datos</button>
+        </form>
+
+        <a href="../VerCursos.html" class="btn-secondary">
+            <i class="fa-solid fa-arrow-left"></i> Regresar a Unidades
+        </a>
+    </div>
+
+    <script>
+        // Script de Validación Personalizada y Simulación
+        const form = document.getElementById('registroForm');
+
+        form.addEventListener('submit', (e) => {
+            let isValid = true;
+            
+            // Limpiar errores previos
+            document.querySelectorAll('.input-group').forEach(g => g.classList.remove('error'));
+
+            // Validar Nombre
+            const nombre = document.getElementById('nombre');
+            if(nombre.value.trim() === '') {
+                setError(nombre);
+                isValid = false;
+            }
+
+            // Validar Email
+            const email = document.getElementById('email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if(!emailRegex.test(email.value.trim())) {
+                setError(email);
+                isValid = false;
+            }
+
+            // Validar Teléfono
+            const telefono = document.getElementById('telefono');
+            if(telefono.value.trim().length < 10 || isNaN(telefono.value.trim())) {
+                setError(telefono);
+                isValid = false;
+            }
+
+            if(!isValid) {
+                e.preventDefault(); 
+            } else {
+                // SIMULACIÓN: Redirigir a exito.html pasando el correo
+                e.preventDefault();
+                const emailValue = document.getElementById('email').value;
+                window.location.href = 'exito.html?email=' + encodeURIComponent(emailValue);
+            }
+        });
+
+        function setError(input) {
+            const group = input.closest('.input-group');
+            group.classList.add('error');
+        }
+    </script>
+</body>
+</html>

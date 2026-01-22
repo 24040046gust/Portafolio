@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad 1: Fundamentos SOA</title>
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/unidad1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="unit-page">
+
+    <div class="bg-blur-container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <header class="navbar-container">
+        <nav class="navbar">
+            <a href="../index.html" class="logo-link">
+                <div class="logo-container">
+                    <img src="../images/logoo.png" alt="Logo" class="main-logo"> 
+                    <div class="logo-text">PORTAFOLIO</div>
+                </div>
+            </a>
+            <div class="nav-actions">
+                <a href="../VerCursos.html" class="btn-back-arrow" title="Regresar a Unidades">
+                    <img src="../images/back.png" alt="Volver" class="back-icon">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="unit-content">
+        <section class="unit-header-main">
+            <h2>UNIDAD 1</h2>
+            <p>Introducción al Desarrollo Web Orientado a Servicios</p>
+        </section>
+
+        <div class="tab-nav-wrapper">
+            <button class="btn-tab active" onclick="openTab('saber', event)">SABER</button>
+            <button class="btn-tab" onclick="openTab('hacer1', event)">SABER HACER 1</button>
+            <button class="btn-tab" onclick="openTab('hacer2', event)">SABER HACER 2</button>
+        </div>
+
+        <div id="saber" class="tab-section active">
+            <div class="glass-panel">
+                
+                <div class="topic">
+                    <h4>1. Paradigma del Desarrollo Orientado a Servicios</h4>
+                    <p>El desarrollo orientado a servicios representa un cambio fundamental respecto a las arquitecturas monolíticas tradicionales. En este paradigma, la lógica de negocio se descompone en unidades funcionales más pequeñas, autónomas y distribuidas (servicios) que pueden residir en diferentes servidores y comunicarse a través de redes.</p>
+                    
+                    <p><strong>Clasificación de Servicios en la Nube (Cloud Computing):</strong><br>
+                    La computación en la nube ofrece servicios escalables bajo demanda, clasificados según el nivel de abstracción:</p>
+                    <ul>
+                        <li><strong>IaaS (Infraestructura como Servicio):</strong> Provee recursos de hardware virtualizados (servidores, redes, almacenamiento). El usuario gestiona el sistema operativo y las aplicaciones. <em>Ej: Amazon EC2, Azure Virtual Machines.</em></li>
+                        <li><strong>PaaS (Plataforma como Servicio):</strong> Ofrece un entorno de desarrollo y despliegue en la nube, abstrae la infraestructura y permite al desarrollador enfocarse solo en el código y la base de datos. <em>Ej: Google App Engine, Heroku.</em></li>
+                        <li><strong>SaaS (Software como Servicio):</strong> Entrega aplicaciones completas listas para el usuario final a través del navegador. El proveedor gestiona todo (infraestructura, datos, aplicación). <em>Ej: Gmail, Salesforce, Microsoft 365.</em></li>
+                    </ul>
+
+                    <p><strong>Características de las Aplicaciones Orientadas a Servicios:</strong></p>
+                    <ul>
+                        <li><strong>Granularidad:</strong> Funcionalidades divididas en tareas específicas.</li>
+                        <li><strong>Interoperabilidad:</strong> Capacidad de comunicarse entre diferentes lenguajes (Java, PHP, .NET) y plataformas.</li>
+                        <li><strong>Acoplamiento Débil:</strong> Mínima dependencia entre el consumidor y el proveedor del servicio.</li>
+                        <li><strong>Reusabilidad:</strong> Un mismo servicio puede ser consumido por múltiples aplicaciones.</li>
+                    </ul>
+
+                    <p><strong>Aplicaciones Web Híbridas (Mashups):</strong><br>
+                    Un <em>Mashup</em> es una aplicación web que integra datos o funcionalidades de dos o más fuentes externas (APIs públicas) para crear un servicio nuevo y distinto.</p>
+                    <ul>
+                        <li><strong>Ejemplo Clásico:</strong> Una web inmobiliaria que toma datos de una base de datos de casas y los superpone en un mapa usando la API de Google Maps.</li>
+                        <li><strong>Características:</strong> Desarrollo rápido, integración de APIs de terceros (YouTube, Twitter, Maps) y enriquecimiento de la experiencia de usuario.</li>
+                    </ul>
+                </div>
+
+                <div class="topic">
+                    <h4>2. Arquitectura Orientada a Servicios (SOA)</h4>
+                    <p>SOA (Service-Oriented Architecture) no es una tecnología específica, sino un <strong>estilo arquitectónico</strong> para diseñar sistemas de software. Su objetivo es permitir que diferentes aplicaciones intercambien datos y participen en procesos de negocio independientemente de los sistemas operativos o lenguajes de programación subyacentes.</p>
+
+                    <p><strong>Principios de Diseño SOA (Manifiesto SOA):</strong><br>
+                    Para que una arquitectura sea verdaderamente SOA, los servicios deben cumplir con:</p>
+                    <ul>
+                        <li><strong>Contrato Estandarizado:</strong> Los servicios deben tener una descripción formal (WSDL/OpenAPI) de su propósito y capacidades.</li>
+                        <li><strong>Abstracción:</strong> La lógica interna está oculta; solo se expone lo necesario a través del contrato.</li>
+                        <li><strong>Reutilización:</strong> La lógica se divide con la intención de ser agnóstica y reutilizable.</li>
+                        <li><strong>Autonomía:</strong> Los servicios tienen control sobre su entorno y recursos; no dependen de otros para existir.</li>
+                        <li><strong>Sin Estado (Statelessness):</strong> Los servicios no deben retener información de la sesión del cliente, mejorando la escalabilidad.</li>
+                        <li><strong>Descubrimiento:</strong> Deben ser fáciles de encontrar e interpretar (meta-datos).</li>
+                        <li><strong>Composibilidad:</strong> Los servicios pueden coordinarse para formar servicios más complejos.</li>
+                    </ul>
+
+                    <p><strong>Estándares y Protocolos Clave:</strong><br>
+                    La implementación técnica de SOA se apoya en un conjunto de estándares rigurosos:</p>
+                    <ul>
+                        <li><strong>XML (Extensible Markup Language):</strong> Es el lenguaje base para la estructura de datos. Permite definir, validar y compartir formatos de datos entre sistemas heterogéneos.</li>
+                        
+                        <li><strong>SOAP (Simple Object Access Protocol):</strong> Protocolo estándar de comunicación basado en XML. Define una estructura de mensaje estricta: <em>Envelope</em> (sobre), <em>Header</em> (seguridad/metadatos) y <em>Body</em> (datos). Es altamente seguro (WS-Security) y transaccional.</li>
+                        
+                        <li><strong>WSDL (Web Services Description Language):</strong> Es un documento XML que actúa como el "manual de usuario" del servicio. Describe <strong>qué</strong> hace el servicio, <strong>dónde</strong> reside y <strong>cómo</strong> invocarlo (parámetros de entrada/salida).</li>
+                        
+                        <li><strong>UDDI (Universal Description, Discovery, and Integration):</strong> Actúa como un "directorio telefónico" (Yellow Pages) para servicios web. Permite a las empresas publicar sus servicios WSDL para que otros desarrolladores los encuentren.</li>
+                        
+                        <li><strong>REST (Representational State Transfer):</strong> A diferencia de SOAP, REST es un estilo arquitectónico más ligero y flexible. Utiliza los métodos estándar del protocolo HTTP (GET, POST, PUT, DELETE) y permite formatos de datos como JSON (más ligero que XML). Es el estándar dominante en la web moderna y aplicaciones móviles.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="hacer1" class="tab-section">
+            <div class="glass-panel" style="text-align: center;">
+                <div class="topic">
+                    <h4>Práctica: Sistema de Registro SMTP</h4>
+                    <p>Desarrollo de un módulo de registro de usuarios (Simulación Frontend).</p>
+                    <ul style="text-align: left;">
+                        <li>Validación de formulario en JavaScript.</li>
+                        <li>Simulación de envío de datos.</li>
+                        <li>Diseño responsivo y amigable.</li>
+                    </ul>
+                </div>
+                
+                <div style="margin-top: 40px;">
+                    <a href="../EnviarCorreo/index.html" class="btn-tab active" style="text-decoration: none; padding: 15px 50px;">
+                        VER PROGRAMA FUNCIONAL
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="hacer2" class="tab-section">
+            <div class="glass-panel">
+                <div class="empty-state">
+                    <h3>¡En Curso!</h3>
+                    <p>Esta práctica se encuentra actualmente en desarrollo.</p>
+                    <p style="font-size: 0.9rem; opacity: 0.7;">Próximamente se integrará la evidencia de servicios locales.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="compact-footer">
+        <p>© 2026 Universidad Tecnológica de Coahuila - Ingeniería en Desarrollo de Software</p>
+    </footer>
+
+    <script>
+        function openTab(tabId, event) {
+            document.querySelectorAll('.tab-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.btn-tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+        
+        // Animación de Blobs
+        const blobs = document.querySelectorAll('.blob');
+        function moveBlobs() {
+            blobs.forEach(blob => {
+                const x = Math.random() * 85;
+                const y = Math.random() * 85;
+                blob.style.left = `${x}%`;
+                blob.style.top = `${y}%`;
+            });
+        }
+        setInterval(moveBlobs, 6000);
+        moveBlobs();
+    </script>
+</body>
+</html>

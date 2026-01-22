@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio - Desarrollo Web Orientado a Servicios</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-blur-container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="blob blob-4"></div>
+    </div>
+
+    <header class="navbar-container">
+        <nav class="navbar">
+            <a href="index.html" class="logo-link">
+                <div class="logo-container">
+                    <img src="images/logoo.png" alt="Logo" class="main-logo"> 
+                    <div class="logo-text">PORTAFOLIO</div>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="VerCursos.html">Unidades</a></li>
+                <li><a href="contacto.html" class="btn-contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="inicio">
+            <div class="hero-content">
+                <span class="subtitle">EVIDENCIAS</span>
+                <h1>Desarrollo Web<br>Orientado a Servicios</h1>
+                <p>Este portafolio presenta las evidencias del desarrollo de una aplicación web, aplicando conceptos de arquitectura SOA y uso de APIs.</p>
+                <a href="VerCursos.html" class="btn-main">VER EVIDENCIAS</a>
+            </div>
+            <div class="hero-image">
+                <div class="floating-wrapper">
+                    <img src="images/espiral-clay.png" class="clay-element" alt="3D Element">
+                    <img src="images/esfera.png" class="clay-sphere s1" alt="Esfera 3D Grande">
+                    <img src="images/esfera.png" class="clay-sphere s2" alt="Esfera 3D Pequeña">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="compact-footer">
+        <p>© 2026 Gustavo Rocamontes / Lucas Lopez - Universidad Tecnológica de Coahuila</p>
+    </footer>
+
+    <script>
+        const blobs = document.querySelectorAll('.blob');
+        function moveBlobs() {
+            blobs.forEach(blob => {
+                const x = Math.random() * 85;
+                const y = Math.random() * 85;
+                blob.style.left = `${x}%`;
+                blob.style.top = `${y}%`;
+            });
+        }
+        setInterval(moveBlobs, 6000);
+        moveBlobs();
+    </script>
+</body>
+</html>

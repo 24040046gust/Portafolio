@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidades - Portafolio</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/cursos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="courses-page">
+
+    <div class="bg-blur-container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <header class="navbar-container">
+        <nav class="navbar">
+            <a href="index.html" class="logo-link">
+                <div class="logo-container">
+                    <img src="images/logoo.png" alt="Logo" class="main-logo"> 
+                    <div class="logo-text">PORTAFOLIO</div>
+                </div>
+            </a>
+            <a href="index.html" class="btn-back-arrow">
+                <img src="images/back.png" alt="Volver" class="back-icon" width="22">
+                <div class="back-text"></div>
+            </a>
+        </nav>
+    </header>
+
+    <main class="courses-section">
+        <div class="section-header">
+            <h2>Unidades de Aprendizaje</h2>
+        </div>
+
+        <div class="cards-stack">
+            <div class="wide-card">
+                <div class="card-tag">Unidad 1</div>
+                <div class="wide-card-content">
+                    <div class="text-side">
+                        <h3>Fundamentos SOA</h3>
+                        <p>Introducción al Desarrollo Web Orientado a Servicios y protocolos de comunicación.</p>
+                    </div>
+                    <div class="button-side">
+                        <a href="U1/unidad1.html" class="btn-wide-explore">Ver Evidencias</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wide-card">
+                <div class="card-tag">Unidad 2</div>
+                <div class="wide-card-content">
+                    <div class="text-side">
+                        <h3>Consumo de APIs</h3>
+                        <p>Implementación y manejo de interfaces de programación de aplicaciones externas.</p>
+                    </div>
+                    <div class="button-side">
+                        <a href="U2/unidad2.html" class="btn-wide-explore">Ver Evidencias</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wide-card">
+                <div class="card-tag">Unidad 3</div>
+                <div class="wide-card-content">
+                    <div class="text-side">
+                        <h3>Desarrollo de API</h3>
+                        <p>Creación y diseño de servicios propios mediante arquitecturas modernas.</p>
+                    </div>
+                    <div class="button-side">
+                        <a href="U3/unidad3.html" class="btn-wide-explore">Ver Evidencias</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wide-card">
+                <div class="card-tag">Unidad 4</div>
+                <div class="wide-card-content">
+                    <div class="text-side">
+                        <h3>Servicio Final</h3>
+                        <p>Implementación final, pruebas y despliegue del servicio web orientado a servicios.</p>
+                    </div>
+                    <div class="button-side">
+                        <a href="U4/unidad4.html" class="btn-wide-explore">Ver Evidencias</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="compact-footer">
+        <p>© 2026 UTC - Ingeniería en Desarrollo de Software</p>
+    </footer>
+
+    <script>
+        const blobs = document.querySelectorAll('.blob');
+        function moveBlobs() {
+            blobs.forEach(blob => {
+                const x = Math.random() * 85;
+                const y = Math.random() * 85;
+                blob.style.left = `${x}%`;
+                blob.style.top = `${y}%`;
+            });
+        }
+        setInterval(moveBlobs, 7000);
+        moveBlobs();
+    </script>
+</body>
+</html>
