@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad 2: Tecnologías y Plataformas Web</title>
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/unidad2.css">
+    <link rel="icon" href="../images/logoo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="unit-page">
+
+    <div class="bg-blur-container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <header class="navbar-container">
+        <nav class="navbar">
+            <a href="../index.html" class="logo-link">
+                <div class="logo-container">
+                    <img src="../images/logoo.png" alt="Logo" class="main-logo"> 
+                    <div class="logo-text">PORTAFOLIO</div>
+                </div>
+            </a>
+            <div class="nav-actions">
+                <a href="../VerCursos.html" class="btn-back-arrow" title="Regresar a Unidades">
+                    <img src="../images/back.png" alt="Volver" class="back-icon">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="unit-content">
+        <section class="unit-header-main">
+            <h2>UNIDAD 2</h2>
+            <p>Ecosistemas Digitales y Gestión de Datos</p>
+        </section>
+
+        <div class="tab-nav-wrapper">
+            <button class="btn-tab active" onclick="openTab('saber', event)">SABER</button>
+            <button class="btn-tab" onclick="openTab('hacer1', event)">SABER HACER 1</button>
+            <button class="btn-tab" onclick="openTab('hacer2', event)">SABER HACER 2</button>
+        </div>
+
+        <div id="saber" class="tab-section active">
+            <div class="glass-panel">
+                
+                <div class="topic">
+                    <h4>1. Geolocalización</h4>
+                    <p>La geolocalización es la capacidad de obtener la ubicación geográfica real de un dispositivo conectado a internet. En el desarrollo web moderno, es fundamental para ofrecer experiencias personalizadas basadas en el contexto del usuario (LBS - Location Based Services).</p>
+                    <p><strong>Métodos de Obtención:</strong></p>
+                    <ul>
+                        <li><strong>GPS (Sistema de Posicionamiento Global):</strong> Alta precisión mediante satélites. Común en móviles, requiere visibilidad al cielo.</li>
+                        <li><strong>Dirección IP:</strong> Menos precisa, basada en el proveedor de internet (ISP). Útil para determinar país o ciudad en ordenadores de escritorio.</li>
+                        <li><strong>Triangulación Wi-Fi/Celular:</strong> Calcula la posición basándose en la intensidad de señal de torres de telefonía o redes Wi-Fi cercanas.</li>
+                    </ul>
+                    <p><em>Aplicación en Desarrollo:</em> Uso de la <strong>Geolocation API</strong> de HTML5 para obtener coordenadas (latitud/longitud) e integración con servicios de mapas como Google Maps Platform o Mapbox.</p>
+                </div>
+
+                <div class="topic">
+                    <h4>2. Redes Sociales e Integración</h4>
+                    <p>Desde una perspectiva técnica, las redes sociales son plataformas que permiten la interacción y el intercambio de contenido a través de grafos sociales. Para los desarrolladores, representan una fuente rica de datos y herramientas de autenticación.</p>
+                    <p><strong>Aspectos Técnicos Clave:</strong></p>
+                    <ul>
+                        <li><strong>Social Login (OAuth):</strong> Permite a los usuarios registrarse en aplicaciones de terceros utilizando sus credenciales de Facebook, Google o X (Twitter), simplificando el acceso.</li>
+                        <li><strong>APIs de Grafos (Graph API):</strong> Estructuras que modelan las relaciones entre usuarios, fotos, comentarios y "me gusta". Permiten a las apps leer y escribir en el timeline del usuario.</li>
+                        <li><strong>Widgets Embebidos:</strong> Integración de feeds, botones de "Compartir" o cajas de comentarios directamente en sitios web externos.</li>
+                    </ul>
+                </div>
+
+                <div class="topic">
+                    <h4>3. Bases de Datos en la Web</h4>
+                    <p>Las bases de datos son el núcleo de cualquier aplicación dinámica, encargadas de persistir, organizar y recuperar la información. En el contexto de servicios web, la tendencia se mueve hacia soluciones gestionadas en la nube.</p>
+                    <p><strong>Tipologías Principales:</strong></p>
+                    <ul>
+                        <li><strong>Relacionales (SQL):</strong> Estructuradas en tablas con esquemas rígidos. Ideales para datos consistentes y transaccionales. <em>Ej: MySQL, PostgreSQL, SQL Server.</em></li>
+                        <li><strong>No Relacionales (NoSQL):</strong> Flexibles, sin esquema fijo. Ideales para Big Data, tiempo real y estructuras JSON. <em>Ej: MongoDB, Firebase Realtime Database.</em></li>
+                        <li><strong>DBaaS (Database as a Service):</strong> Modelos donde el proveedor de nube gestiona el mantenimiento, copias de seguridad y escalado. <em>Ej: Amazon RDS, Azure SQL.</em></li>
+                    </ul>
+                </div>
+
+                <div class="topic">
+                    <h4>4. Plataformas On-Line</h4>
+                    <p>Las plataformas on-line son entornos digitales integrales diseñados para facilitar interacciones específicas, ya sea comerciales, educativas o de gestión. Se diferencian de un sitio web estático por su alta interactividad y lógica de negocio compleja.</p>
+                    <p><strong>Ejemplos y Arquitectura:</strong></p>
+                    <ul>
+                        <li><strong>E-Commerce (Comercio Electrónico):</strong> Plataformas para la compra-venta. Requieren integración con pasarelas de pago (Stripe, PayPal), gestión de inventarios y seguridad SSL robusta. <em>Ej: Shopify, Magento, Amazon.</em></li>
+                        <li><strong>E-Learning (LMS):</strong> Sistemas de gestión de aprendizaje que administran cursos, calificaciones y usuarios. Soportan estándares como SCORM. <em>Ej: Moodle, Blackboard, Coursera.</em></li>
+                        <li><strong>Marketplaces:</strong> Plataformas multilaterales que conectan oferta y demanda (como Uber o Airbnb), gestionando la transacción entre pares.</li>
+                    </ul>
+                </div>
+
+                <div class="topic">
+                    <h4>5. Plataformas de Streaming</h4>
+                    <p>El streaming es la tecnología que permite la transmisión continua de audio y video sin necesidad de descargar el archivo completo previamente. Esto ha revolucionado el consumo de medios digitales.</p>
+                    <p><strong>Funcionamiento Técnico:</strong></p>
+                    <ul>
+                        <li><strong>Buffer:</strong> Almacenamiento temporal de datos en el dispositivo del cliente para asegurar una reproducción fluida ante inestabilidad de red.</li>
+                        <li><strong>Protocolos Adaptativos (HLS / DASH):</strong> Dividen el video en pequeños fragmentos (chunks) y adaptan la calidad (bitrate) en tiempo real según la velocidad de internet del usuario.</li>
+                        <li><strong>CDNs (Redes de Entrega de Contenido):</strong> Servidores distribuidos globalmente para reducir la latencia, entregando el contenido desde el punto geográfico más cercano al usuario.</li>
+                        <li><strong>Codecs:</strong> Algoritmos de compresión (como H.264, HEVC, AAC) vitales para reducir el peso de los archivos sin perder calidad perceptible.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="hacer1" class="tab-section">
+            <div class="glass-panel" style="text-align: center;">
+                <div class="topic">
+                    <h4>Práctica: Aplicaciones con API de Geolocalización</h4>
+                    <p>Diseño de un sitio web interactivo que integra mapas y documenta conceptos fundamentales.</p>
+                    
+                    <ul style="text-align: left;">
+                        <li><strong>Conceptos Clave:</strong> Definición de geolocalización, tipos más utilizados y definición técnica de API.</li>
+                        <li><strong>Gestión de API:</strong> Explicación sobre cómo generar una Clave de API (API Key) segura.</li>
+                        <li><strong>Investigación:</strong> Mención de 5 aplicaciones del mercado que utilizan geolocalización.</li>
+                        <li><strong>Implementación:</strong> Visualización de los diferentes tipos de ubicación en un mapa (temas vistos en clase).</li>
+                    </ul>
+                </div>
+                
+                <div style="margin-top: 40px;">
+                    <a href="geo/index.html" class="btn-tab active" style="text-decoration: none; padding: 15px 50px;">
+                        VER SITIO DE GEOLOCALIZACIÓN
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="hacer2" class="tab-section">
+            <div class="glass-panel">
+                <div class="empty-state">
+                    <h3>¡En Curso!</h3>
+                    <p>Esta práctica se encuentra actualmente en desarrollo.</p>
+                    <p style="font-size: 0.9rem; opacity: 0.7;">Próximamente se integrará la evidencia de la segunda práctica.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="compact-footer">
+        <p>© 2026 Gustavo Rocamontes / Lucas Lopez - Universidad Tecnológica de Coahuila</p>
+    </footer>
+
+    <script>
+        function openTab(tabId, event) {
+            document.querySelectorAll('.tab-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.btn-tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+        
+        // Animación de Blobs
+        const blobs = document.querySelectorAll('.blob');
+        function moveBlobs() {
+            blobs.forEach(blob => {
+                const x = Math.random() * 85;
+                const y = Math.random() * 85;
+                blob.style.left = `${x}%`;
+                blob.style.top = `${y}%`;
+            });
+        }
+        setInterval(moveBlobs, 6000);
+        moveBlobs();
+    </script>
+</body>
+</html>

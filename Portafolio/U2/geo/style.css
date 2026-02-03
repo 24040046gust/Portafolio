@@ -1,0 +1,241 @@
+/* --- Estilos Geolocalización (Tema Personalizado) --- */
+
+/* 1. FONDO GENERAL */
+body.split-body {
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    /* Color exacto solicitado */
+    background-color: #4a7c7a;
+    /* Un degradado muy sutil para dar profundidad sin cambiar el tono */
+    background: linear-gradient(135deg, #4a7c7a 0%, #3d6664 100%);
+    color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Blobs de fondo (Blancos) */
+.blob {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.25); /* Blanco puro con transparencia */
+    border-radius: 50%;
+    filter: blur(50px); /* Difuminado suave */
+    z-index: -1;
+    transition: all 6s ease-in-out;
+}
+
+/* Tamaños y posiciones de los blobs */
+.blob-1 { width: 450px; height: 450px; top: -10%; left: -10%; opacity: 0.6; }
+.blob-2 { width: 350px; height: 350px; bottom: 10%; right: 5%; opacity: 0.4; }
+.blob-3 { width: 200px; height: 200px; top: 40%; left: 40%; opacity: 0.3; }
+
+
+/* 2. LAYOUT PRINCIPAL */
+.split-layout {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    padding: 140px 5% 40px; /* Espacio superior para el Navbar */
+    gap: 40px;
+    max-width: 1800px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+/* 3. COLUMNA IZQUIERDA (Texto) */
+.glass-panel-scroll {
+    flex: 0 0 35%;
+    min-width: 400px;
+    
+    /* Panel Oscuro pero un poco más integrado con el fondo nuevo */
+    background: rgba(30, 50, 50, 0.5); 
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 30px;
+    padding: 40px;
+    
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* Títulos */
+.intro-header {
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 20px;
+}
+
+.intro-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: white;
+    margin: 0 0 10px;
+    line-height: 1.1;
+}
+
+.intro-header p {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.9);
+    font-weight: 300;
+}
+
+/* Tarjetas internas */
+.glass-card {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.glass-card h3 {
+    color: #ffffff; /* Títulos en blanco para mejor contraste */
+    margin-top: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Decoración pequeña al lado del título */
+.glass-card h3::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 18px;
+    background: #ffffff;
+    border-radius: 2px;
+    opacity: 0.6;
+}
+
+.glass-card p {
+    color: rgba(255,255,255,0.95);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+    text-align: justify;
+}
+
+/* Grid de iconos */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.info-item {
+    background: rgba(0,0,0,0.15);
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.info-item strong { display: block; color: white; margin-bottom: 5px; font-size: 0.9rem; }
+.info-item p { font-size: 0.8rem; opacity: 0.8; margin: 0; }
+
+.glass-footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    margin-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+}
+
+/* 4. COLUMNA DERECHA (Mapa) */
+.map-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.map-floating-card {
+    background: rgba(30, 50, 50, 0.5); /* Coincide con el panel izquierdo */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 30px;
+    padding: 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.map-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.map-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 700;
+}
+
+/* Botón "Localizarme" */
+.btn-pastel {
+    background: #ffffff;      
+    color: #4a7c7a;           /* Texto del color principal */
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+}
+
+.btn-pastel:hover {
+    background: #f0f0f0;      
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Mapa */
+#map {
+    flex-grow: 1;
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    z-index: 1;
+}
+
+/* Coordenadas */
+.coords-display {
+    background: rgba(0,0,0,0.25);
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Inter', monospace;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* RESPONSIVIDAD */
+@media (max-width: 1000px) {
+    body.split-body { overflow: auto; height: auto; }
+    .split-layout {
+        flex-direction: column;
+        padding: 120px 5% 40px;
+        gap: 30px;
+    }
+    .glass-panel-scroll { flex: none; width: 100%; min-width: 0; }
+    .map-section { height: 500px; }
+}

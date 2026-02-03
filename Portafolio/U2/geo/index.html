@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica: Geolocalización</title>
+    
+    <link rel="stylesheet" href="../../styles/index.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="icon" href="../../images/logoo.png" type="image/png">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="split-body">
+
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <header class="navbar-container">
+        <nav class="navbar">
+            <a href="../../index.html" class="logo-link">
+                <div class="logo-container">
+                    <img src="../../images/logoo.png" alt="Logo" class="main-logo"> 
+                    <div class="logo-text">PORTAFOLIO</div>
+                </div>
+            </a>
+            <div class="nav-actions">
+                <a href="../unidad2.html" class="btn-back-arrow" title="Regresar a Unidad 2">
+                    <img src="../../images/back.png" alt="Volver" class="back-icon">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="split-layout">
+        
+        <div class="glass-panel-scroll">
+            <section class="intro-header">
+                <h1>Servicios de<br>Geolocalización</h1>
+                <p>Investigación y aplicación práctica de APIs de ubicación.</p>
+            </section>
+
+            <div class="glass-divider"></div>
+
+            <section class="glass-card">
+                <h3>1. ¿Qué es la geolocalización?</h3>
+                <p>
+                    Es la capacidad tecnológica de determinar la ubicación geográfica real (coordenadas de latitud y longitud) de un dispositivo conectado a Internet, utilizando diversas fuentes de datos como satélites o redes.
+                </p>
+            </section>
+
+            <section class="glass-card">
+                <h3>2. Tipos más utilizados</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>📡 GPS</strong>
+                        <p>Satélites. Máxima precisión en exteriores.</p>
+                    </div>
+                    <div class="info-item">
+                        <strong>📶 Wi-Fi</strong>
+                        <p>Basado en redes inalámbricas cercanas.</p>
+                    </div>
+                    <div class="info-item">
+                        <strong>🗼 GSM</strong>
+                        <p>Triangulación de antenas celulares.</p>
+                    </div>
+                    <div class="info-item">
+                        <strong>💻 IP</strong>
+                        <p>Ubicación aproximada por proveedor ISP.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="glass-card">
+                <h3>3. Aplicaciones Reales</h3>
+                <ul class="clean-list">
+                    <li>🚗 <strong>Uber/DiDi:</strong> Transporte y logística.</li>
+                    <li>🗺️ <strong>Google Maps:</strong> Navegación en tiempo real.</li>
+                    <li>📸 <strong>Instagram:</strong> Geoetiquetado de contenidos.</li>
+                    <li>🎮 <strong>Pokémon GO:</strong> Realidad aumentada.</li>
+                    <li>💘 <strong>Tinder:</strong> Búsqueda por proximidad.</li>
+                </ul>
+            </section>
+
+            <section class="glass-card">
+                <h3>4. ¿Qué es una API?</h3>
+                <p>
+                    Una <strong>API (Interfaz de Programación de Aplicaciones)</strong> es un conjunto de reglas que permite que dos software se comuniquen. La <em>Geolocation API</em> permite al navegador pedir coordenadas al hardware del dispositivo.
+                </p>
+            </section>
+
+            <section class="glass-card">
+                <h3>5. Generar una API Key</h3>
+                <p>Para usar servicios como Google Maps, se requiere una clave única:</p>
+                <ol style="font-size: 0.9rem; padding-left: 20px; line-height: 1.6;">
+                    <li>Crear proyecto en <strong>Google Cloud Console</strong>.</li>
+                    <li>Habilitar la API (ej. Maps JavaScript API).</li>
+                    <li>Ir a <strong>Credenciales > Crear Clave de API</strong>.</li>
+                    <li>Restringir la clave (por IP o dominio) para seguridad.</li>
+                </ol>
+            </section>
+
+            <footer class="glass-footer">
+                <p>© 2026 Gustavo Rocamontes / Lucas Lopez<br>Universidad Tecnológica de Coahuila</p>
+            </footer>
+        </div>
+
+        <div class="map-section">
+            <div class="map-floating-card">
+                <div class="map-header">
+                    <h2>Práctica de Ubicación</h2>
+                    <button onclick="obtenerUbicacion()" class="btn-pastel">
+                         LOCALIZARME
+                    </button>
+                </div>
+                
+                <div id="map"></div>
+                
+                <div class="coords-display" id="coords">
+                    Esperando permiso...
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        var map;
+        var marker;
+        var circle;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mapa base oscuro
+            map = L.map('map').setView([23.6345, -102.5528], 5);
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; OpenStreetMap &copy; CARTO',
+                maxZoom: 19
+            }).addTo(map);
+        });
+
+        function obtenerUbicacion() {
+            const status = document.getElementById('coords');
+            
+            if (navigator.geolocation) {
+                status.innerHTML = "📡 Buscando señal...";
+                status.style.color = "#ffd54f"; // Amarillo
+                
+                navigator.geolocation.getCurrentPosition(mostrarMapa, error, {
+                    enableHighAccuracy: true,
+                    timeout: 10000
+                });
+            } else {
+                alert("Navegador no compatible.");
+            }
+        }
+
+        function mostrarMapa(position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            const acc = position.coords.accuracy;
+            const status = document.getElementById('coords');
+
+            map.setView([lat, lon], 16);
+
+            if (marker) map.removeLayer(marker);
+            if (circle) map.removeLayer(circle);
+
+            marker = L.marker([lat, lon]).addTo(map)
+                .bindPopup(`<strong>¡Estás aquí!</strong><br>Precisión: ${acc.toFixed(0)}m`)
+                .openPopup();
+
+            circle = L.circle([lat, lon], {
+                radius: acc,
+                color: '#4db6ac',
+                fillColor: '#4db6ac',
+                fillOpacity: 0.2
+            }).addTo(map);
+
+            status.innerHTML = `Lat: ${lat.toFixed(4)} | Lon: ${lon.toFixed(4)}`;
+            status.style.color = "#69f0ae"; // Verde
+        }
+
+        function error(err) {
+            const status = document.getElementById('coords');
+            status.innerHTML = "⚠️ Error al obtener ubicación.";
+            status.style.color = "#ff8a80";
+        }
+
+        const blobs = document.querySelectorAll('.blob');
+        function moveBlobs() {
+            blobs.forEach(blob => {
+                const x = Math.random() * 85; 
+                const y = Math.random() * 85; 
+                blob.style.left = `${x}%`;
+                blob.style.top = `${y}%`;
+            });
+        }
+        setInterval(moveBlobs, 6000); 
+        moveBlobs(); 
+    </script>
+</body>
+</html>
