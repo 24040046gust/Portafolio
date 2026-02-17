@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica: Calculadora de IMC</title>
+    <link rel="stylesheet" href="../../styles/index.css">
+    <link rel="icon" href="../../images/logoo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* --- ESTILOS UNIFICADOS DE LA CALCULADORA --- */
+        
+        .unit-content {
+            padding: 160px 10% 80px;
+            max-width: 1000px;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+
+        .unit-header-main {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .unit-header-main h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .unit-header-main p {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Contenedor tipo Glass Panel */
+        .calculator-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 35px;
+            padding: 50px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+            max-width: 450px; /* Evita que se estire demasiado */
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-group label {
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-left: 5px;
+        }
+
+        input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 14px;
+            border-radius: 15px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: white;
+        }
+
+        input[readonly] {
+            background: rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.05);
+            color: #4db6ac; /* Color de realce para resultados */
+            font-weight: 700;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        /* Estilo de botones basado en el portafolio */
+        .btn-calc {
+            flex: 1;
+            padding: 12px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+
+        .btn-primary { background: white; color: #2c4d4b; }
+        .btn-secondary { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); }
+
+        .btn-calc:hover { transform: translateY(-2px); opacity: 0.9; }
+
+        hr.separator {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            .unit-header-main h2 { font-size: 2.5rem; }
+            .calculator-card { padding: 30px; }
+        }
+    </style>
+</head>
+<body class="unit-page">
+
+    <div class="bg-blur-container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <header class="navbar-container">
+        <nav class="navbar">
+            <a href="../../index.html" class="logo-link">
+                <div class="logo-container">
+                    <img src="../../images/logoo.png" alt="Logo" class="main-logo"> 
+                    <div class="logo-text">PORTAFOLIO</div>
+                </div>
+            </a>
+            <div class="nav-actions">
+                <a href="../unidad2.html" class="btn-back-arrow" title="Volver a la Unidad">
+                    <img src="../../images/back.png" alt="Volver" class="back-icon">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="unit-content">
+        <section class="unit-header-main">
+            <h2>Calculadora de IMC</h2>
+            <p>Saber Hacer: Lógica de Programación con JavaScript</p>
+        </section>
+
+        <div class="calculator-card">
+            <div class="input-group">
+                <label for="peso">Ingresa tu peso (kg)</label>
+                <input type="number" id="peso" placeholder="Ej: 75">
+            </div>
+
+            <div class="input-group">
+                <label for="altura">Ingresa tu altura (m)</label>
+                <input type="number" id="altura" step="0.01" placeholder="Ej: 1.75">
+            </div>
+
+            <div class="button-row">
+                <button id="btnCalcular" class="btn-calc btn-primary">Calcular</button>
+                <button id="btnLimpiar" class="btn-calc btn-secondary">Limpiar</button>
+            </div>
+
+            <hr class="separator">
+
+            <div class="input-group">
+                <label>Tu IMC:</label>
+                <input type="text" id="imc" readonly placeholder="0.00">
+            </div>
+
+            <div class="input-group">
+                <label>Estatus:</label>
+                <input type="text" id="estatus" readonly placeholder="Esperando datos...">
+            </div>
+        </div>
+    </main>
+
+   <footer class="compact-footer">
+        <p>© 2026 Gustavo Rocamontes / Lucas Lopez - Universidad Tecnológica de Coahuila</p>
+    </footer>
+
+    <script src="main.js"></script>
+
+    <script>
+        const blobs = document.querySelectorAll('.blob');
+        function moveBlobs() {
+            blobs.forEach(blob => {
+                const x = Math.random() * 85;
+                const y = Math.random() * 85;
+                blob.style.left = `${x}%`;
+                blob.style.top = `${y}%`;
+            });
+        }
+        setInterval(moveBlobs, 6000);
+        moveBlobs();
+    </script>
+</body>
+</html>
