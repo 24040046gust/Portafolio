@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad 3: Servicios Web REST</title>
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/unidad1.css">
+    <link rel="icon" href="../images/logoo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="unit-page">
+
+    <div class="bg-blur-container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <header class="navbar-container">
+        <nav class="navbar">
+            <a href="../index.html" class="logo-link">
+                <div class="logo-container">
+                    <img src="../images/logoo.png" alt="Logo" class="main-logo"> 
+                    <div class="logo-text">PORTAFOLIO</div>
+                </div>
+            </a>
+            <div class="nav-actions">
+                <a href="../VerCursos.html" class="btn-back-arrow" title="Regresar a Unidades">
+                    <img src="../images/back.png" alt="Volver" class="back-icon">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="unit-content">
+        <section class="unit-header-main">
+            <h2>UNIDAD 3</h2>
+            <p>Desarrollo e Integración de Servicios Web REST</p>
+        </section>
+
+        <div class="tab-nav-wrapper">
+            <button class="btn-tab active" onclick="openTab('saber', event)">SABER</button>
+            <button class="btn-tab" onclick="openTab('hacer1', event)">SABER HACER 1</button>
+            <button class="btn-tab" onclick="openTab('hacer2', event)">SABER HACER 2</button>
+        </div>
+
+        <div id="saber" class="tab-section active">
+            <div class="glass-panel">
+                <div class="empty-state">
+                    <h3>¡En Curso!</h3>
+                    <p>Esta unidad se encuentra actualmente en desarrollo.</p>
+                    <p style="font-size: 0.9rem; opacity: 0.7;">Próximamente se integrará el contenido teórico de la Unidad 3.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="hacer1" class="tab-section">
+            <div class="glass-panel">
+                <div class="empty-state">
+                    <h3>¡En Curso!</h3>
+                    <p>Esta práctica se encuentra actualmente en desarrollo.</p>
+                    <p style="font-size: 0.9rem; opacity: 0.7;">Próximamente se integrará la evidencia correspondiente.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="hacer2" class="tab-section">
+            <div class="glass-panel">
+                <div class="empty-state">
+                    <h3>¡En Curso!</h3>
+                    <p>Esta práctica se encuentra actualmente en desarrollo.</p>
+                    <p style="font-size: 0.9rem; opacity: 0.7;">Próximamente se integrará la evidencia correspondiente.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="compact-footer">
+        <p>© 2026 Gustavo Rocamontes / Lucas Lopez - Universidad Tecnológica de Coahuila</p>
+    </footer>
+
+    <script>
+        function openTab(tabId, event) {
+            document.querySelectorAll('.tab-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.btn-tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+        
+        // Animación de Blobs
+        const blobs = document.querySelectorAll('.blob');
+        function moveBlobs() {
+            blobs.forEach(blob => {
+                const x = Math.random() * 85;
+                const y = Math.random() * 85;
+                blob.style.left = `${x}%`;
+                blob.style.top = `${y}%`;
+            });
+        }
+        setInterval(moveBlobs, 6000);
+        moveBlobs();
+    </script>
+</body>
+</html>
