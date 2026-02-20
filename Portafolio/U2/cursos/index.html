@@ -5,47 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gestión de Cursos</title>
 
-<!-- ESTILOS GLOBALES DEL SITIO -->
-<link rel="stylesheet" href="../../styles/index.css">
 <link rel="icon" href="../../images/logoo.png" type="image/png">
-
-<!-- FUENTES -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-
-<!-- LIBRERÍAS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
 <style>
-/* ===== CONTENIDO CURSOS ===== */
 
-.unit-content{
-padding:160px 10% 80px;
-max-width:1000px;
-margin:0 auto;
-min-height:100vh;
-}
+/* ===== CONTENEDOR ===== */
 
-.unit-header-main{
-text-align:center;
-margin-bottom:50px;
-}
-
-.unit-header-main h2{
-font-size:3.5rem;
-font-weight:700;
-color:white;
+body{
 margin:0;
-text-shadow:0 4px 10px rgba(0,0,0,.2);
+font-family:'Inter',sans-serif;
+background:linear-gradient(135deg,#3f6f6b,#7ea8a4);
+color:white;
 }
 
-.unit-header-main p{
-font-size:1.1rem;
-opacity:.85;
-color:rgba(255,255,255,.9);
-}
-
-/* ===== TARJETA ===== */
+/* ===== TARJETAS ===== */
 
 .cursos-card{
 background:rgba(255,255,255,.08);
@@ -54,12 +30,15 @@ border:1px solid rgba(255,255,255,.15);
 border-radius:35px;
 padding:40px;
 box-shadow:0 30px 60px rgba(0,0,0,.1);
-margin-bottom:40px;
+margin:40px auto;
+max-width:1100px;
 }
+
+/* ===== FORM ===== */
 
 .form-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
 }
 
@@ -69,24 +48,24 @@ flex-direction:column;
 gap:8px;
 }
 
-.input-group label{
+input,select{
+background:rgba(255,255,255,.12);
+border:1px solid rgba(255,255,255,.25);
+padding:14px;
+border-radius:12px;
 color:white;
-font-weight:600;
-font-size:.9rem;
-margin-left:5px;
+font-size:14px;
+outline:none;
 }
 
-input,select{
-background:rgba(255,255,255,.1);
-border:1px solid rgba(255,255,255,.2);
-padding:14px;
-border-radius:15px;
-color:white;
-font-family:'Inter',sans-serif;
+select option{
+color:black;
 }
+
+/* ===== BOTON PRINCIPAL ===== */
 
 .btn-main{
-margin-top:20px;
+margin-top:25px;
 width:100%;
 padding:16px;
 border-radius:50px;
@@ -95,101 +74,66 @@ font-weight:700;
 cursor:pointer;
 background:white;
 color:#2c4d4b;
+transition:.3s;
+}
+
+.btn-main:hover{
+transform:scale(1.02);
 }
 
 /* ===== TABLA ===== */
 
-.table-wrapper{overflow-x:auto;}
-
 table{
 width:100%;
 border-collapse:collapse;
-color:white;
 }
 
 th{
 padding:15px;
-border-bottom:2px solid rgba(255,255,255,.1);
+border-bottom:1px solid rgba(255,255,255,.2);
 opacity:.7;
 text-align:left;
 }
 
 td{
 padding:12px;
-border-bottom:1px solid rgba(255,255,255,.05);
+border-bottom:1px solid rgba(255,255,255,.1);
 }
 
-.inp-table{
-background:transparent;
-border:none;
-color:#b2d8d6;
-font-weight:700;
-width:100%;
-}
+/* ===== BOTONES ACCIONES ===== */
 
-.btn-editar{
-background:#b2d8d6;
-color:#2c4d4b;
+.btn-guardar{
+background:#4fc3f7;
 border:none;
-padding:6px 12px;
+color:white;
+padding:7px 14px;
 border-radius:8px;
 cursor:pointer;
+margin-right:5px;
+font-weight:600;
 }
 
 .btn-eliminar{
-background:#e57373;
-color:white;
+background:#ef5350;
 border:none;
-padding:6px 12px;
+color:white;
+padding:7px 14px;
 border-radius:8px;
 cursor:pointer;
+font-weight:600;
 }
 
-@media(max-width:768px){
-.unit-header-main h2{font-size:2.5rem;}
-}
+.btn-guardar:hover{background:#29b6f6;}
+.btn-eliminar:hover{background:#e53935;}
+
 </style>
 </head>
 
-<body class="unit-page">
-
-<!-- FONDO -->
-<div class="bg-blur-container">
-<div class="blob blob-1"></div>
-<div class="blob blob-2"></div>
-<div class="blob blob-3"></div>
-</div>
-
-<!-- NAVBAR -->
-<header class="navbar-container">
-<nav class="navbar">
-
-<a href="../../index.html" class="logo-link">
-<div class="logo-container">
-<img src="../../images/logoo.png" alt="Logo" class="main-logo">
-<div class="logo-text">PORTAFOLIO</div>
-</div>
-</a>
-
-<div class="nav-actions">
-<a href="../unidad2.html" class="btn-back-arrow" title="Volver a la Unidad">
-<img src="../../images/back.png" alt="Volver" class="back-icon">
-</a>
-</div>
-
-</nav>
-</header>
-
-<!-- CONTENIDO -->
-<main class="unit-content">
-
-<section class="unit-header-main">
-<h2>Gestión de Cursos</h2>
-</section>
+<body>
 
 <section class="cursos-card">
-<form id="formCurso">
 
+<form id="formCurso">
 <div class="form-grid">
 
 <div class="input-group">
@@ -224,16 +168,17 @@ cursor:pointer;
 
 <div class="input-group">
 <label>Costo</label>
-<input id="costo" type="number" step="0.01">
+<input id="costo" type="number">
 </div>
 
 </div>
 
 <button class="btn-main">Registrar Curso</button>
 </form>
+
 </section>
 
-<section class="cursos-card table-wrapper">
+<section class="cursos-card">
 <table>
 <thead>
 <tr>
@@ -250,35 +195,99 @@ cursor:pointer;
 </table>
 </section>
 
-</main>
-
-<!-- FOOTER -->
-<footer class="compact-footer">
-<p>© 2026 Gustavo Rocamontes / Lucas Lopez - Universidad Tecnológica de Coahuila</p>
-</footer>
-
-<!-- LIBRERÍAS -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<!-- SCRIPT LOCAL -->
-<script src="./main.js"></script>
-
 <script>
-const blobs=document.querySelectorAll('.blob');
 
-function moveBlobs(){
-blobs.forEach(blob=>{
-const x=Math.random()*85;
-const y=Math.random()*85;
-blob.style.left=`${x}%`;
-blob.style.top=`${y}%`;
-});
+/* ===== CONFIG TOASTR ===== */
+toastr.options={
+positionClass:"toast-top-right",
+timeOut:2000
 }
 
-setInterval(moveBlobs,6000);
-moveBlobs();
+/* ===== REGISTRAR ===== */
+
+formCurso.addEventListener("submit",e=>{
+e.preventDefault()
+
+const nombre=nombreCurso.value.trim()
+const instructor=nombreInstructor.value.trim()
+const horas=horasInput()
+const nivel=nivelInput()
+const fecha=fechaInicio.value
+const costo=costoInput()
+
+if(!nombre || !instructor || !horas || !nivel || !fecha || !costo){
+toastr.warning("Completa todos los campos")
+return
+}
+
+agregarFila(nombre,instructor,horas,nivel,fecha,costo)
+formCurso.reset()
+toastr.success("Curso registrado")
+})
+
+function horasInput(){return document.getElementById("horas").value}
+function nivelInput(){return document.getElementById("nivel").value}
+function costoInput(){return document.getElementById("costo").value}
+
+/* ===== CREAR FILA ===== */
+
+function agregarFila(n,i,h,niv,f,c){
+
+const tr=document.createElement("tr")
+
+tr.innerHTML=`
+<td>${n}</td>
+<td>${i}</td>
+<td>${h}</td>
+<td>${niv}</td>
+<td>${f}</td>
+<td>${c}</td>
+<td>
+<button class="btn-guardar">Guardar</button>
+<button class="btn-eliminar">Borrar</button>
+</td>
+`
+
+tablaCursos.appendChild(tr)
+
+/* ===== ELIMINAR ===== */
+
+tr.querySelector(".btn-eliminar").onclick=()=>{
+Swal.fire({
+title:"¿Eliminar curso?",
+text:"Esta acción no se puede deshacer",
+icon:"warning",
+showCancelButton:true,
+confirmButtonText:"Eliminar"
+}).then(res=>{
+if(res.isConfirmed){
+tr.remove()
+toastr.info("Curso eliminado")
+}
+})
+}
+
+/* ===== ACTUALIZAR ===== */
+
+tr.querySelector(".btn-guardar").onclick=()=>{
+Swal.fire({
+title:"¿Guardar cambios?",
+icon:"question",
+showCancelButton:true,
+confirmButtonText:"Guardar"
+}).then(res=>{
+if(res.isConfirmed){
+toastr.success("Cambios guardados")
+}
+})
+}
+
+}
+
 </script>
 
 </body>
