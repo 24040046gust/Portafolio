@@ -5,9 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gestión de Cursos</title>
 
+<!-- ESTILOS GLOBALES DEL SITIO -->
 <link rel="stylesheet" href="../../styles/index.css">
 <link rel="icon" href="../../images/logoo.png" type="image/png">
+
+<!-- FUENTES -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<!-- LIBRERÍAS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
@@ -148,16 +153,17 @@ cursor:pointer;
 
 <body class="unit-page">
 
-<!-- Fondo igual al resto del sitio -->
+<!-- FONDO -->
 <div class="bg-blur-container">
 <div class="blob blob-1"></div>
 <div class="blob blob-2"></div>
 <div class="blob blob-3"></div>
 </div>
 
-<!-- NAVBAR (idéntica a calculadora IMC) -->
+<!-- NAVBAR -->
 <header class="navbar-container">
 <nav class="navbar">
+
 <a href="../../index.html" class="logo-link">
 <div class="logo-container">
 <img src="../../images/logoo.png" alt="Logo" class="main-logo">
@@ -170,6 +176,7 @@ cursor:pointer;
 <img src="../../images/back.png" alt="Volver" class="back-icon">
 </a>
 </div>
+
 </nav>
 </header>
 
@@ -182,6 +189,7 @@ cursor:pointer;
 
 <section class="cursos-card">
 <form id="formCurso">
+
 <div class="form-grid">
 
 <div class="input-group">
@@ -244,18 +252,22 @@ cursor:pointer;
 
 </main>
 
-<!-- FOOTER (idéntico a calculadora IMC) -->
+<!-- FOOTER -->
 <footer class="compact-footer">
 <p>© 2026 Gustavo Rocamontes / Lucas Lopez - Universidad Tecnológica de Coahuila</p>
 </footer>
 
+<!-- LIBRERÍAS -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="main.js"></script>
+
+<!-- SCRIPT LOCAL -->
+<script src="./main.js"></script>
 
 <script>
 const blobs=document.querySelectorAll('.blob');
+
 function moveBlobs(){
 blobs.forEach(blob=>{
 const x=Math.random()*85;
@@ -264,6 +276,7 @@ blob.style.left=`${x}%`;
 blob.style.top=`${y}%`;
 });
 }
+
 setInterval(moveBlobs,6000);
 moveBlobs();
 </script>
