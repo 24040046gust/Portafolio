@@ -11,84 +11,166 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
 <style>
-:root {
-    --bg-main: #4a7c7a;
-    --text-white: #ffffff;
-    --nav-glass: rgba(255, 255, 255, 0.1);
-    --glass-border: rgba(255, 255, 255, 0.2);
+:root{
+--bg-main:#4a7c7a;
+--text-white:#ffffff;
+--nav-glass:rgba(255,255,255,0.1);
+--glass-border:rgba(255,255,255,0.2);
 }
 
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-main);
-    color: var(--text-white);
-    overflow-x: hidden;
+body{
+margin:0;
+font-family:'Inter',sans-serif;
+background:var(--bg-main);
+color:white;
+overflow-x:hidden;
 }
 
-.bg-blur-container {
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    z-index: -1;
+/* ===== Fondo animado ===== */
+.bg-blur-container{
+position:fixed;
+top:0;left:0;width:100vw;height:100vh;
+z-index:-1;
 }
 
-.blob {
-    position: absolute;
-    width: 600px; height: 600px;
-    border-radius: 50%;
-    filter: blur(90px);
-    opacity: 0.5;
-    transition: all 6s ease-in-out;
+.blob{
+position:absolute;
+width:600px;height:600px;
+border-radius:50%;
+filter:blur(90px);
+opacity:.5;
+transition:6s;
 }
 
-.blob-1 { background: #b2d8d6; top: -10%; left: -10%; }
-.blob-2 { background: #2c4d4b; bottom: -10%; right: -10%; }
-.blob-3 { background: rgba(255, 255, 255, 0.2); top: 40%; left: 40%; width: 400px; height: 400px; }
-.blob-4 { background: #5fa4a1; top: -5%; right: 20%; }
+.blob-1{background:#b2d8d6;top:-10%;left:-10%;}
+.blob-2{background:#2c4d4b;bottom:-10%;right:-10%;}
+.blob-3{background:rgba(255,255,255,.2);top:40%;left:40%;width:400px;height:400px;}
+.blob-4{background:#5fa4a1;top:-5%;right:20%;}
 
-.unit-content {
-    padding: 180px 10% 80px;
-    max-width: 1100px;
-    margin: 0 auto;
+/* ===== NAVBAR ===== */
+.navbar-container{
+position:fixed;
+top:30px;left:0;right:0;
+display:flex;justify-content:center;
+z-index:999;
+padding:0 20px;
 }
 
-.glass-card {
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(40px);
-    border-radius: 35px;
-    padding: 40px;
-    margin-bottom: 40px;
+.navbar{
+width:100%;
+max-width:1100px;
+height:80px;
+background:var(--nav-glass);
+backdrop-filter:blur(20px);
+border:1px solid var(--glass-border);
+padding:0 40px;
+border-radius:100px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
-.form-grid {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+.logo-container{
+display:flex;
+align-items:center;
+gap:10px;
 }
 
-input, select {
-    padding:14px;
-    border-radius:15px;
-    border:none;
+.main-logo{height:40px;}
+.logo-text{font-weight:800;letter-spacing:2px;}
+
+.back-icon{height:25px;}
+
+/* ===== CONTENIDO ===== */
+.unit-content{
+padding:180px 10% 80px;
+max-width:1100px;
+margin:auto;
+}
+
+.glass-card{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(40px);
+border-radius:35px;
+padding:40px;
+margin-bottom:40px;
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+input,select{
+background:rgba(255,255,255,.1);
+border:1px solid rgba(255,255,255,.2);
+padding:14px;
+border-radius:15px;
+color:white;
 }
 
 .btn-main-unificado{
-    margin-top:20px;
-    width:100%;
-    padding:18px;
-    border-radius:50px;
-    font-weight:800;
-    cursor:pointer;
+margin-top:25px;
+width:100%;
+padding:18px;
+border-radius:50px;
+font-weight:800;
+cursor:pointer;
+background:white;
+color:#4a7c7a;
+border:none;
 }
 
-table{width:100%;}
-.inp-table{width:100%;}
-</style>
+table{
+width:100%;
+border-collapse:collapse;
+}
 
+th,td{
+padding:12px;
+border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.inp-table{
+background:transparent;
+border:none;
+color:#b2d8d6;
+width:100%;
+font-weight:700;
+}
+
+.btn-editar{
+background:#b2d8d6;
+border:none;
+padding:6px 12px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.btn-eliminar{
+background:#e57373;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* ===== FOOTER ===== */
+.compact-footer{
+text-align:center;
+padding:30px;
+background:#242525;
+color:#8f8f8f;
+margin-top:50px;
+}
+</style>
 </head>
 
 <body>
 
+<!-- Fondo -->
 <div class="bg-blur-container">
 <div class="blob blob-1"></div>
 <div class="blob blob-2"></div>
@@ -96,6 +178,23 @@ table{width:100%;}
 <div class="blob blob-4"></div>
 </div>
 
+<!-- NAVBAR -->
+<header class="navbar-container">
+<nav class="navbar">
+<a href="../../index.html">
+<div class="logo-container">
+<img src="../../images/logoo.png" class="main-logo">
+<div class="logo-text">PORTAFOLIO</div>
+</div>
+</a>
+
+<a href="../unidad2.html">
+<img src="../../images/back.png" class="back-icon">
+</a>
+</nav>
+</header>
+
+<!-- CONTENIDO -->
 <main class="unit-content">
 
 <section class="glass-card">
@@ -104,12 +203,14 @@ table{width:100%;}
 <input id="nombreCurso" placeholder="Curso">
 <input id="nombreInstructor" placeholder="Instructor">
 <input id="horas" type="number" placeholder="Horas">
+
 <select id="nivel">
 <option value="">Nivel</option>
 <option>Básico</option>
 <option>Intermedio</option>
 <option>Avanzado</option>
 </select>
+
 <input id="fechaInicio" type="date">
 <input id="costo" type="number" step="0.01" placeholder="Costo">
 </div>
@@ -136,6 +237,11 @@ table{width:100%;}
 </section>
 
 </main>
+
+<!-- FOOTER -->
+<footer class="compact-footer">
+<p>© 2026 Gustavo Rocamontes - Universidad Tecnológica de Coahuila</p>
+</footer>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
