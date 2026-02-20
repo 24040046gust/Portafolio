@@ -5,94 +5,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gestión de Cursos</title>
 
+<link rel="stylesheet" href="../../styles/index.css">
 <link rel="icon" href="../../images/logoo.png" type="image/png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
 <style>
-:root{
---bg-main:#4a7c7a;
---text-white:#ffffff;
---nav-glass:rgba(255,255,255,0.1);
---glass-border:rgba(255,255,255,0.2);
-}
+/* ===== CONTENIDO CURSOS ===== */
 
-body{
-margin:0;
-font-family:'Inter',sans-serif;
-background:var(--bg-main);
-color:white;
-overflow-x:hidden;
-}
-
-/* ===== Fondo animado ===== */
-.bg-blur-container{
-position:fixed;
-top:0;left:0;width:100vw;height:100vh;
-z-index:-1;
-}
-
-.blob{
-position:absolute;
-width:600px;height:600px;
-border-radius:50%;
-filter:blur(90px);
-opacity:.5;
-transition:6s;
-}
-
-.blob-1{background:#b2d8d6;top:-10%;left:-10%;}
-.blob-2{background:#2c4d4b;bottom:-10%;right:-10%;}
-.blob-3{background:rgba(255,255,255,.2);top:40%;left:40%;width:400px;height:400px;}
-.blob-4{background:#5fa4a1;top:-5%;right:20%;}
-
-/* ===== NAVBAR ===== */
-.navbar-container{
-position:fixed;
-top:30px;left:0;right:0;
-display:flex;justify-content:center;
-z-index:999;
-padding:0 20px;
-}
-
-.navbar{
-width:100%;
-max-width:1100px;
-height:80px;
-background:var(--nav-glass);
-backdrop-filter:blur(20px);
-border:1px solid var(--glass-border);
-padding:0 40px;
-border-radius:100px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.logo-container{
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-.main-logo{height:40px;}
-.logo-text{font-weight:800;letter-spacing:2px;}
-
-.back-icon{height:25px;}
-
-/* ===== CONTENIDO ===== */
 .unit-content{
-padding:180px 10% 80px;
-max-width:1100px;
-margin:auto;
+padding:160px 10% 80px;
+max-width:1000px;
+margin:0 auto;
+min-height:100vh;
 }
 
-.glass-card{
+.unit-header-main{
+text-align:center;
+margin-bottom:50px;
+}
+
+.unit-header-main h2{
+font-size:3.5rem;
+font-weight:700;
+color:white;
+margin:0;
+text-shadow:0 4px 10px rgba(0,0,0,.2);
+}
+
+.unit-header-main p{
+font-size:1.1rem;
+opacity:.85;
+color:rgba(255,255,255,.9);
+}
+
+/* ===== TARJETA ===== */
+
+.cursos-card{
 background:rgba(255,255,255,.08);
 backdrop-filter:blur(40px);
+border:1px solid rgba(255,255,255,.15);
 border-radius:35px;
 padding:40px;
+box-shadow:0 30px 60px rgba(0,0,0,.1);
 margin-bottom:40px;
 }
 
@@ -102,46 +58,73 @@ grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
 }
 
+.input-group{
+display:flex;
+flex-direction:column;
+gap:8px;
+}
+
+.input-group label{
+color:white;
+font-weight:600;
+font-size:.9rem;
+margin-left:5px;
+}
+
 input,select{
 background:rgba(255,255,255,.1);
 border:1px solid rgba(255,255,255,.2);
 padding:14px;
 border-radius:15px;
 color:white;
+font-family:'Inter',sans-serif;
 }
 
-.btn-main-unificado{
-margin-top:25px;
+.btn-main{
+margin-top:20px;
 width:100%;
-padding:18px;
+padding:16px;
 border-radius:50px;
-font-weight:800;
+border:none;
+font-weight:700;
 cursor:pointer;
 background:white;
-color:#4a7c7a;
-border:none;
+color:#2c4d4b;
 }
+
+/* ===== TABLA ===== */
+
+.table-wrapper{overflow-x:auto;}
 
 table{
 width:100%;
 border-collapse:collapse;
+color:white;
 }
 
-th,td{
+th{
+padding:15px;
+border-bottom:2px solid rgba(255,255,255,.1);
+opacity:.7;
+text-align:left;
+}
+
+td{
 padding:12px;
-border-bottom:1px solid rgba(255,255,255,.1);
+border-bottom:1px solid rgba(255,255,255,.05);
 }
 
 .inp-table{
 background:transparent;
 border:none;
 color:#b2d8d6;
-width:100%;
 font-weight:700;
+width:100%;
 }
 
 .btn-editar{
 background:#b2d8d6;
+color:#2c4d4b;
 border:none;
 padding:6px 12px;
 border-radius:8px;
@@ -157,69 +140,93 @@ border-radius:8px;
 cursor:pointer;
 }
 
-/* ===== FOOTER ===== */
-.compact-footer{
-text-align:center;
-padding:30px;
-background:#242525;
-color:#8f8f8f;
-margin-top:50px;
+@media(max-width:768px){
+.unit-header-main h2{font-size:2.5rem;}
 }
 </style>
 </head>
 
-<body>
+<body class="unit-page">
 
-<!-- Fondo -->
+<!-- Fondo igual al resto del sitio -->
 <div class="bg-blur-container">
 <div class="blob blob-1"></div>
 <div class="blob blob-2"></div>
 <div class="blob blob-3"></div>
-<div class="blob blob-4"></div>
 </div>
 
-<!-- NAVBAR -->
+<!-- NAVBAR (idéntica a calculadora IMC) -->
 <header class="navbar-container">
 <nav class="navbar">
-<a href="../../index.html">
+<a href="../../index.html" class="logo-link">
 <div class="logo-container">
-<img src="../../images/logoo.png" class="main-logo">
+<img src="../../images/logoo.png" alt="Logo" class="main-logo">
 <div class="logo-text">PORTAFOLIO</div>
 </div>
 </a>
 
-<a href="../unidad2.html">
-<img src="../../images/back.png" class="back-icon">
+<div class="nav-actions">
+<a href="../unidad2.html" class="btn-back-arrow" title="Volver a la Unidad">
+<img src="../../images/back.png" alt="Volver" class="back-icon">
 </a>
+</div>
 </nav>
 </header>
 
 <!-- CONTENIDO -->
 <main class="unit-content">
 
-<section class="glass-card">
+<section class="unit-header-main">
+<h2>Gestión de Cursos</h2>
+<p>Saber Hacer: CRUD con JavaScript</p>
+</section>
+
+<section class="cursos-card">
 <form id="formCurso">
 <div class="form-grid">
-<input id="nombreCurso" placeholder="Curso">
-<input id="nombreInstructor" placeholder="Instructor">
-<input id="horas" type="number" placeholder="Horas">
 
+<div class="input-group">
+<label>Nombre del Curso</label>
+<input id="nombreCurso">
+</div>
+
+<div class="input-group">
+<label>Instructor</label>
+<input id="nombreInstructor">
+</div>
+
+<div class="input-group">
+<label>Horas</label>
+<input id="horas" type="number">
+</div>
+
+<div class="input-group">
+<label>Nivel</label>
 <select id="nivel">
-<option value="">Nivel</option>
+<option value="">Seleccione...</option>
 <option>Básico</option>
 <option>Intermedio</option>
 <option>Avanzado</option>
 </select>
-
-<input id="fechaInicio" type="date">
-<input id="costo" type="number" step="0.01" placeholder="Costo">
 </div>
 
-<button class="btn-main-unificado">Registrar</button>
+<div class="input-group">
+<label>Fecha de inicio</label>
+<input id="fechaInicio" type="date">
+</div>
+
+<div class="input-group">
+<label>Costo</label>
+<input id="costo" type="number" step="0.01">
+</div>
+
+</div>
+
+<button class="btn-main">Registrar Curso</button>
 </form>
 </section>
 
-<section class="glass-card">
+<section class="cursos-card table-wrapper">
 <table>
 <thead>
 <tr>
@@ -238,9 +245,9 @@ margin-top:50px;
 
 </main>
 
-<!-- FOOTER -->
+<!-- FOOTER (idéntico a calculadora IMC) -->
 <footer class="compact-footer">
-<p>© 2026 Gustavo Rocamontes - Universidad Tecnológica de Coahuila</p>
+<p>© 2026 Gustavo Rocamontes / Lucas Lopez - Universidad Tecnológica de Coahuila</p>
 </footer>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -250,13 +257,16 @@ margin-top:50px;
 
 <script>
 const blobs=document.querySelectorAll('.blob');
-setInterval(()=>{
-blobs.forEach(b=>{
-const x=Math.random()*20;
-const y=Math.random()*20;
-b.style.transform=`translate(${x}px,${-y}px) scale(1.1)`
-})
-},6000)
+function moveBlobs(){
+blobs.forEach(blob=>{
+const x=Math.random()*85;
+const y=Math.random()*85;
+blob.style.left=`${x}%`;
+blob.style.top=`${y}%`;
+});
+}
+setInterval(moveBlobs,6000);
+moveBlobs();
 </script>
 
 </body>
