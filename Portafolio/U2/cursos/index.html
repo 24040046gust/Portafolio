@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gestión de Cursos</title>
 
+<link rel="stylesheet" href="../../styles/index.css">
 <link rel="icon" href="../../images/logoo.png" type="image/png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -12,26 +13,36 @@
 
 <style>
 
-/* ===== CONTENEDOR ===== */
+/* ===== CONTENIDO ===== */
 
-body{
-margin:0;
-font-family:'Inter',sans-serif;
-background:linear-gradient(135deg,#3f6f6b,#7ea8a4);
+.unit-content{
+padding:160px 10% 80px;
+max-width:1100px;
+margin:0 auto;
+min-height:100vh;
+}
+
+.unit-header-main{
+text-align:center;
+margin-bottom:40px;
+}
+
+.unit-header-main h2{
+font-size:3rem;
+font-weight:700;
 color:white;
 }
 
-/* ===== TARJETAS ===== */
+/* ===== TARJETA ===== */
 
 .cursos-card{
 background:rgba(255,255,255,.08);
 backdrop-filter:blur(40px);
 border:1px solid rgba(255,255,255,.15);
 border-radius:35px;
-padding:40px;
+padding:35px;
 box-shadow:0 30px 60px rgba(0,0,0,.1);
-margin:40px auto;
-max-width:1100px;
+margin-bottom:35px;
 }
 
 /* ===== FORM ===== */
@@ -39,35 +50,36 @@ max-width:1100px;
 .form-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
+gap:18px;
 }
 
 .input-group{
 display:flex;
 flex-direction:column;
-gap:8px;
+gap:6px;
+}
+
+.input-group label{
+color:white;
+font-weight:600;
+font-size:.9rem;
 }
 
 input,select{
 background:rgba(255,255,255,.12);
 border:1px solid rgba(255,255,255,.25);
-padding:14px;
+padding:13px;
 border-radius:12px;
 color:white;
-font-size:14px;
 outline:none;
 }
 
-select option{
-color:black;
-}
-
-/* ===== BOTON PRINCIPAL ===== */
+select option{color:black;}
 
 .btn-main{
-margin-top:25px;
+margin-top:20px;
 width:100%;
-padding:16px;
+padding:15px;
 border-radius:50px;
 border:none;
 font-weight:700;
@@ -77,19 +89,18 @@ color:#2c4d4b;
 transition:.3s;
 }
 
-.btn-main:hover{
-transform:scale(1.02);
-}
+.btn-main:hover{transform:scale(1.02);}
 
 /* ===== TABLA ===== */
 
 table{
 width:100%;
 border-collapse:collapse;
+color:white;
 }
 
 th{
-padding:15px;
+padding:14px;
 border-bottom:1px solid rgba(255,255,255,.2);
 opacity:.7;
 text-align:left;
@@ -100,16 +111,16 @@ padding:12px;
 border-bottom:1px solid rgba(255,255,255,.1);
 }
 
-/* ===== BOTONES ACCIONES ===== */
+/* ===== BOTONES ===== */
 
 .btn-guardar{
 background:#4fc3f7;
 border:none;
 color:white;
-padding:7px 14px;
+padding:6px 14px;
 border-radius:8px;
 cursor:pointer;
-margin-right:5px;
+margin-right:6px;
 font-weight:600;
 }
 
@@ -117,7 +128,7 @@ font-weight:600;
 background:#ef5350;
 border:none;
 color:white;
-padding:7px 14px;
+padding:6px 14px;
 border-radius:8px;
 cursor:pointer;
 font-weight:600;
@@ -129,10 +140,41 @@ font-weight:600;
 </style>
 </head>
 
-<body>
+<body class="unit-page">
+
+<!-- ===== FONDO ===== -->
+<div class="bg-blur-container">
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+</div>
+
+<!-- ===== NAVBAR ORIGINAL ===== -->
+<header class="navbar-container">
+<nav class="navbar">
+<a href="../../index.html" class="logo-link">
+<div class="logo-container">
+<img src="../../images/logoo.png" class="main-logo">
+<div class="logo-text">PORTAFOLIO</div>
+</div>
+</a>
+
+<div class="nav-actions">
+<a href="../unidad2.html" class="btn-back-arrow">
+<img src="../../images/back.png" class="back-icon">
+</a>
+</div>
+</nav>
+</header>
+
+<!-- ===== CONTENIDO ===== -->
+<main class="unit-content">
+
+<section class="unit-header-main">
+<h2>Gestión de Cursos</h2>
+</section>
 
 <section class="cursos-card">
-
 <form id="formCurso">
 <div class="form-grid">
 
@@ -175,7 +217,6 @@ font-weight:600;
 
 <button class="btn-main">Registrar Curso</button>
 </form>
-
 </section>
 
 <section class="cursos-card">
@@ -195,17 +236,19 @@ font-weight:600;
 </table>
 </section>
 
+</main>
+
+<!-- ===== FOOTER ORIGINAL ===== -->
+<footer class="compact-footer">
+<p>© 2026 Gustavo Rocamontes / Lucas Lopez - Universidad Tecnológica de Coahuila</p>
+</footer>
+
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-
-/* ===== CONFIG TOASTR ===== */
-toastr.options={
-positionClass:"toast-top-right",
-timeOut:2000
-}
+toastr.options={positionClass:"toast-top-right",timeOut:2000}
 
 /* ===== REGISTRAR ===== */
 
@@ -219,7 +262,7 @@ const nivel=nivelInput()
 const fecha=fechaInicio.value
 const costo=costoInput()
 
-if(!nombre || !instructor || !horas || !nivel || !fecha || !costo){
+if(!nombre||!instructor||!horas||!nivel||!fecha||!costo){
 toastr.warning("Completa todos los campos")
 return
 }
@@ -229,11 +272,11 @@ formCurso.reset()
 toastr.success("Curso registrado")
 })
 
-function horasInput(){return document.getElementById("horas").value}
-function nivelInput(){return document.getElementById("nivel").value}
-function costoInput(){return document.getElementById("costo").value}
+function horasInput(){return horas.value}
+function nivelInput(){return nivel.value}
+function costoInput(){return costo.value}
 
-/* ===== CREAR FILA ===== */
+/* ===== FILA ===== */
 
 function agregarFila(n,i,h,niv,f,c){
 
@@ -254,40 +297,48 @@ tr.innerHTML=`
 
 tablaCursos.appendChild(tr)
 
-/* ===== ELIMINAR ===== */
-
+/* eliminar */
 tr.querySelector(".btn-eliminar").onclick=()=>{
 Swal.fire({
 title:"¿Eliminar curso?",
-text:"Esta acción no se puede deshacer",
 icon:"warning",
 showCancelButton:true,
 confirmButtonText:"Eliminar"
-}).then(res=>{
-if(res.isConfirmed){
+}).then(r=>{
+if(r.isConfirmed){
 tr.remove()
 toastr.info("Curso eliminado")
 }
 })
 }
 
-/* ===== ACTUALIZAR ===== */
-
+/* guardar */
 tr.querySelector(".btn-guardar").onclick=()=>{
 Swal.fire({
 title:"¿Guardar cambios?",
 icon:"question",
 showCancelButton:true,
 confirmButtonText:"Guardar"
-}).then(res=>{
-if(res.isConfirmed){
+}).then(r=>{
+if(r.isConfirmed){
 toastr.success("Cambios guardados")
 }
 })
 }
 
 }
+</script>
 
+<script>
+const blobs=document.querySelectorAll('.blob');
+function moveBlobs(){
+blobs.forEach(blob=>{
+blob.style.left=Math.random()*85+"%";
+blob.style.top=Math.random()*85+"%";
+});
+}
+setInterval(moveBlobs,6000);
+moveBlobs();
 </script>
 
 </body>
