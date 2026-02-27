@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevCore Inc. | Escuela de Programación</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <p class="brand">DEVCORE INC.</p>
+            <h1 class="slogan">Aprende a<br>Programar</h1>
+            <div class="divider"></div>
+            <p class="tagline">Domina las tecnologías más demandadas del mercado.</p>
+            <button class="btn-main" id="startBtn">VER CURSOS</button>
+        </div>
+    </header>
+
+    <main id="coursesSection" class="courses-section">
+        <h2 class="section-title">Nuestros Programas</h2>
+        <div id="coursesContainer" class="courses-grid">
+            </div>
+    </main>
+
+    <div id="loginSection" class="admin-access">
+        <button id="showLoginBtn" class="btn-secondary">Iniciar Sesión</button>
+    </div>
+
+    <section id="adminSection" class="admin-panel" style="display: none;">
+        <div class="admin-card">
+            <p class="step-num">ADMINISTRACIÓN</p>
+            <h2>Agregar nuevo curso</h2>
+            <form id="addCourseForm">
+                <input type="text" id="title" placeholder="Título del curso" required>
+                <textarea id="description" placeholder="Descripción del curso (objetivos, duración...)" rows="4"></textarea>
+                <button type="submit" class="btn-next">GUARDAR CURSO</button>
+            </form>
+            <button id="logoutBtn" class="btn-logout-new">Finalizar Sesión</button>
+        </div>
+    </section>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-split">
+            <div class="modal-image-v2"></div> <div class="modal-form-side">
+                <span class="close">&times;</span>
+                <p class="step-num">LOGIN</p>
+                <h3>Bienvenido de nuevo</h3>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <input type="email" id="email" placeholder="hola@gmail.com" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="password" placeholder="contraseña" required>
+                    </div>
+                    <button type="submit" class="btn-next">ENTRAR</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
