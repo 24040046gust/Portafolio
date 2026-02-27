@@ -47,11 +47,34 @@
 
         <div id="saber" class="tab-section active">
             <div class="glass-panel">
-                <div class="empty-state">
-                    <h3>¡En Curso!</h3>
-                    <p>Esta unidad se encuentra actualmente en desarrollo.</p>
-                    <p style="font-size: 0.9rem; opacity: 0.7;">Próximamente se integrará el contenido teórico de la Unidad 3.</p>
+                
+                <div class="topic">
+                    <h4>1. Frameworks en el Desarrollo de Aplicaciones Orientadas a Servicios (SOA)</h4>
+                    <p>Los frameworks para servicios web proporcionan las herramientas y bibliotecas necesarias para construir, desplegar y gestionar servicios de manera eficiente, abstrayendo la complejidad de los protocolos de comunicación.</p>
+                    <p><strong>Frameworks Principales por Ecosistema:</strong></p>
+                    <ul>
+                        <li><strong>Express.js (Node.js):</strong> El estándar de facto para construir APIs REST. Es minimalista, flexible y cuenta con un ecosistema masivo de middlewares para autenticación y validación.</li>
+                        <li><strong>Spring Boot (Java):</strong> Utilizado en entornos empresariales de alto nivel. Facilita la creación de microservicios autónomos y robustos gracias a su inyección de dependencias y configuración automática.</li>
+                        <li><strong>Django REST Framework (Python):</strong> Un toolkit potente que permite construir APIs web de forma rápida. Destaca por su panel de administración y facilidad para manejar serialización de datos.</li>
+                        <li><strong>ASP.NET Core (C#):</strong> Framework multiplataforma de alto rendimiento desarrollado por Microsoft, ideal para servicios escalables e integración nativa con servicios en la nube (Azure).</li>
+                        <li><strong>FastAPI (Python):</strong> Moderno y veloz, basado en tipos estándar de Python que permiten la generación automática de documentación (Swagger).</li>
+                    </ul>
                 </div>
+
+                <div class="topic">
+                    <h4>2. Proceso de Desarrollo de una API (Application Programming Interface)</h4>
+                    <p>El desarrollo de una API exitosa sigue un ciclo de vida estructurado que garantiza la escalabilidad, seguridad y facilidad de uso para otros desarrolladores (consumidores de la API).</p>
+                    <p><strong>Fases del Proceso de Desarrollo:</strong></p>
+                    <ul>
+                        <li><strong>1. Diseño y Especificación:</strong> Se definen los endpoints (rutas), los métodos HTTP (GET, POST, PUT, DELETE) y el formato de datos (usualmente JSON). Se recomienda usar el estándar <em>OpenAPI (Swagger)</em>.</li>
+                        <li><strong>2. Configuración del Entorno y Servidor:</strong> Selección del framework (ej. Express.js) y configuración de la base de datos que almacenará la información.</li>
+                        <li><strong>3. Desarrollo de Endpoints y Lógica:</strong> Implementación de los controladores que manejan las peticiones del cliente, procesan la información y devuelven una respuesta adecuada.</li>
+                        <li><strong>4. Seguridad y Autenticación:</strong> Implementación de capas de seguridad como <em>JSON Web Tokens (JWT)</em> o OAuth2 para restringir el acceso a usuarios autorizados.</li>
+                        <li><strong>5. Pruebas (Testing):</strong> Uso de herramientas como <em>Postman</em> o <em>Insomnia</em> para verificar que cada ruta responde correctamente bajo diferentes escenarios (éxitos y errores 404, 500, etc.).</li>
+                        <li><strong>6. Documentación y Despliegue:</strong> Generación de guías para que otros desarrolladores sepan cómo usar la API y publicación en servidores como Heroku, AWS o Azure.</li>
+                    </ul>
+                </div>
+
             </div>
         </div>
 
@@ -93,7 +116,6 @@
             event.currentTarget.classList.add('active');
         }
         
-        // Animación de Blobs
         const blobs = document.querySelectorAll('.blob');
         function moveBlobs() {
             blobs.forEach(blob => {
