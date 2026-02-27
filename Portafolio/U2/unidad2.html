@@ -44,6 +44,7 @@
             <button class="btn-tab" onclick="openTab('hacer1', event)">SABER HACER 1</button>
             <button class="btn-tab" onclick="openTab('hacer2', event)">SABER HACER 2</button>
             <button class="btn-tab" onclick="openTab('hacer3', event)">SABER HACER 3</button>
+            <button class="btn-tab" onclick="openTab('hacer4', event)">SABER HACER 4</button>
         </div>
 
         <div id="saber" class="tab-section active">
@@ -125,7 +126,7 @@
                 
                 <div style="margin-top: 40px;">
                     <a href="geo/index.html" class="btn-tab active" style="text-decoration: none; padding: 15px 50px;">
-                        VER SITIO DE GEOLOCALIZACIÓN
+                        VER PROGRAMA
                     </a>
                 </div>
             </div>
@@ -175,13 +176,28 @@
                 
                 <div style="margin-top: 40px;">
                     <a href="cursos/index.html" class="btn-tab active" style="text-decoration: none; padding: 15px 50px;">
-                        VER SISTEMA DE CURSOS
+                        VER PROGRAMA
                     </a>
                 </div>
             </div>
         </div>
 
-    </main>
+        <div id="hacer4" class="tab-section">
+            <div class="glass-panel" style="text-align: center;">
+                <div class="topic">
+                    <h4>Práctica: Sistema con Login y Registro de Cursos</h4>
+                    <p><strong>Objetivo:</strong> Desarrollar una aplicación web tomando como referencia el diseño del SH3, donde se implemente un sistema con inicio de sesión y registro de cursos, utilizando base de datos y backend.</p>
+                    
+                </div>
+                
+                <div style="margin-top: 40px;">
+                    <a href="dash/index.html" class="btn-tab active" style="text-decoration: none; padding: 15px 50px;">
+                        VER PROGRAMA
+                    </a>
+                </div>
+            </div>
+        </div>
+        </main>
 
     <footer class="compact-footer">
         <p>© 2026 Gustavo Rocamontes / Lucas Lopez - Universidad Tecnológica de Coahuila</p>
@@ -199,7 +215,7 @@
             event.currentTarget.classList.add('active');
         }
         
-        // animacion de blobs blanpos
+        // animacion de blobs blancos
         const blobs = document.querySelectorAll('.blob');
         function moveBlobs() {
             blobs.forEach(blob => {
